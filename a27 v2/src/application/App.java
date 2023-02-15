@@ -1,7 +1,7 @@
 package application;
 /*
 
-VERSÃO 1
+VERSÃO 2
 
 Fazer um programa para ler os dados de uma reserva de hotel (número do quarto, data de entrada e data de saída) e mostrar os dados da reserva, inclusive sua duração em dias. Em seguida, ler novas datas de entrada e saída, atualizar a reserva, e mostrar novamente a reserva com os dados atualizados. O programa não deve aceitar dados inválidos para a reserva, conforme as seguintes regras:
 - Alterações de reserva só podem ocorrer para datas futuras
@@ -78,21 +78,16 @@ public class App {
             Date checkOut2 = sdf.parse(sc.next());
 
 
-            Date now = new Date();
+            String error = reservation.updateDates(checkIn2, checkOut2);
 
-            if(checkIn2.before(now) || checkOut2.before(now))
+            if(error != null)
             {
-                System.out.println("Error in reservation: Reservation dates for update must be future dates");
-            }
-            else if(!checkOut.after(checkIn))
-            {
-                System.out.println("Error in reservation: Check-out date must be after check-in date");
+                System.out.println("Error in reservation: " + error);
             }
             else
             {
-                reservation.updateDates(checkIn2, checkOut2);
                 System.out.println("Reservation: " + reservation);
-            }
+            }           
 
         }
 
