@@ -1,0 +1,17 @@
+https://github.com/acenelio/interfaces2-java
+(também é explicado no capítulo Interfaces nos PDFs)
+Mostra a diferença de uma interface para uma classe abstrata.
+Respectivamente, uma impõe um método a ser executado nas classes filhas,
+já na classe abstrata é possível também colocar atributos que serão herdados
+e podem ser reutilizados nas classes filhas.
+No projeto é demonstrado como usar interfaces e classes abstratas juntas, para
+que haja a reutilização de atributos.
+
+
+
+https://github.com/acenelio/interfaces3-java
+(também é explicado no capítulo Interfaces nos PDFs)
+Explica e exemplifica o conceito de Herança múltipla e o problema do diamante,
+apresentando uma solução.
+Quando há uma classe que precisaria herdar atributos e métodos de duas ou mais classes
+que já são classes filhas.
