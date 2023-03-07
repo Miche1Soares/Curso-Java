@@ -1,13 +1,17 @@
 package application;
 
-import model.entities.Department;
+import model.dao.DaoFactory;
+import model.dao.SellerDao;
+import model.entities.Seller;
 
 public class App {
     public static void main(String[] args) throws Exception {
 
-        Department department = new Department(1,"Books");
+        SellerDao sellerDao = DaoFactory.createSellerDao();
 
-        System.out.println(department);
+        Seller seller = sellerDao.findById(3);
+
+        System.out.println(seller);
 
     }
 }
