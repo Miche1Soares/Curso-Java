@@ -3,6 +3,7 @@ package com.example.springboot.entities;
 import java.io.Serializable;
 
 import com.example.springboot.entities.pk.OrderItemPK;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
@@ -15,7 +16,8 @@ public class OrderItem implements Serializable{
     
     // id composto
     @EmbeddedId
-    private OrderItemPK id;
+    // sempre q criar uma classe auxiliar com este id composto é necessario realizar a instanciação
+    private OrderItemPK id = new OrderItemPK();
 
     private Integer quantity;
     private Double price;
@@ -30,6 +32,8 @@ public class OrderItem implements Serializable{
         this.price = price;
     }
 
+    @JsonIgnore
+    // aqui é onde o id do produto é chamado, logo será necessário parar o loop
     public Order getOrder()
     {
         return id.getOrder();
