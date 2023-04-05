@@ -1,5 +1,7 @@
 package com.example.springboot_mongo.services;
 
+import java.util.Date;
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +22,21 @@ public class PostService {
     {
         Optional<Post> obj = repo.findById(id);
         return obj.orElseThrow(() -> new ObjectNotFoundException("Objeto não encontrado"));
+    }
+
+
+    public List<Post> findByTitle(String text)
+    {
+        //return repo.findByTitleContainingIgnoreCase(text);
+        return repo.searchTitle(text);
+    }
+
+
+    public List<Post> fullSearch(String text, Date minDate, Date maxDate)
+    {
+        // acrescenta 24h ao instante da procura para q englobe o dia inteiro, n só até o instante do dia
+        maxDate = new Date(maxDate.getTime() + 24*60*60*1000);
+        return repo.fullSearch(text, minDate, maxDate);
     }
 
 
